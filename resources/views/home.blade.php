@@ -237,7 +237,7 @@ $(document).ready(function(){
                                                     <ul class="list-group">
                                                         <li class="list-group-item active"> <b>By:</b> {{ $transfersin[$j]->from_user->name }}</li>
                                                         <li class="list-group-item"> <b>Purpose:</b> {{ $transfersin[$j]->purpose }}</li>
-                                                        <li class="list-group-item">{{ number_format($transfersin[$j]->amount, 2, '.', ',') }} <i class="fas fa-euro-sign"></i></li>
+                                                        <li class="list-group-item">+ {{ number_format($transfersin[$j]->amount, 2, '.', ',') }} <i class="fas fa-euro-sign"></i></li>
                                                         <li class="list-group-item"><i class="fas fa-calendar-day"></i> {{ $transfersin[$j]->created_at }} </li>
                                                     </ul>
                                                 </div>
@@ -285,7 +285,7 @@ $(document).ready(function(){
                                                     <ul class="list-group">
                                                         <li class="list-group-item active"> <b>By:</b> {{ $transfersout[$j]->from_user->name }}</li>
                                                         <li class="list-group-item"> <b>Purpose:</b> {{ $transfersout[$j]->purpose }}</li>
-                                                        <li class="list-group-item">{{ number_format($transfersout[$j]->amount, 2, '.', ',') }} <i class="fas fa-euro-sign"></i></li>
+                                                        <li class="list-group-item"> - {{ number_format($transfersout[$j]->amount, 2, '.', ',') }} <i class="fas fa-euro-sign"></i></li>
                                                         <li class="list-group-item"><i class="fas fa-calendar-day"></i> {{ $transfersout[$j]->created_at }} </li>
                                                     </ul>
                                                 </div>
