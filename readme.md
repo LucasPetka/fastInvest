@@ -14,3 +14,5 @@ $ php artisan serve
 ### Already made data
 If you want to load already made Database to look around.
 There is fast_invest.sql file in main folder, Import it to your database.
+
+Made by Lukas Petkevicius
