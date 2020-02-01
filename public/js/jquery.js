@@ -45,4 +45,27 @@ $(document).ready(function(){
         }
     });
 
+
+    //Page counter for transactions list
+    var page_counter_out = 1;
+    $( "#page_list" ).html(page_counter_out);
+
+    $( "#up_list" ).click(function() {
+        if( $('#list_'+(page_counter_out+1) ).length ){
+            page_counter_out++;
+            $("div[id^='list_']").hide();
+            $( "#page_list" ).html(page_counter_out);
+            $( "#list_"+page_counter_out  ).show();
+        }
+    });
+
+    $( "#down_list" ).click(function() {
+        if( $('#list_'+(page_counter_out-1) ).length ){
+            page_counter_out--;
+            $("div[id^='list_']").hide();
+            $( "#page_list" ).html(page_counter_out);
+            $( "#list_"+page_counter_out  ).show();
+        }
+    });
+
 });

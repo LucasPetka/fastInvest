@@ -129,10 +129,13 @@ $(document).ready(function(){
                     <!------------------------------------------Check all transfers buttons----------------------------------------->
                     <div class="row mt-4">
                         <div class="col-12">
-                            <button type="button" class="btn btn-success m-1 float-left" data-toggle="collapse" data-target="#transfersIn" aria-expanded="false" aria-controls="transfersIn">
+                            <button type="button" class="btn btn-primary m-1 float-left"  data-toggle="collapse" data-target="#transferlist" aria-expanded="false" aria-controls="transferlist">
+                                <i class="fas fa-sign-out-alt"></i> Transfers List <span class="badge badge-light">{{ count($transferlist) }}</span>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm m-1 float-left" data-toggle="collapse" data-target="#transfersIn" aria-expanded="false" aria-controls="transfersIn">
                                 <i class="fas fa-sign-in-alt"></i>  Transfers in <span class="badge badge-light">{{ count($transfersin) }}</span>
                             </button>
-                            <button type="button" class="btn btn-danger m-1 float-left"  data-toggle="collapse" data-target="#transfersOut" aria-expanded="false" aria-controls="transfersOut">
+                            <button type="button" class="btn btn-danger btn-sm m-1 float-left"  data-toggle="collapse" data-target="#transfersOut" aria-expanded="false" aria-controls="transfersOut">
                                 <i class="fas fa-sign-out-alt"></i> Transfers out <span class="badge badge-light">{{ count($transfersout) }}</span>
                             </button>
                         </div>
@@ -150,6 +153,68 @@ $(document).ready(function(){
 
 
                     <div class="accordion" id="accordion">
+
+                        <!-----------------------------Collapse box for Transactions List---------------------------------------->
+                        <div class="collapse" id="transferlist" data-parent="#accordion">
+                            <p class="h4 text-center mt-2">Transactions List</p>
+
+                            <hr>
+
+                            @if(count($transferlist) > 0)
+
+                                @php $pagelist = 1; @endphp
+                                @for ($j = 0; $j < count($transferlist); $j)
+                                    @if($j == 0)
+                                        <div id="list_{{ $pagelist }}" class="row mt-3"> 
+                                    @else
+                                        <div id="list_{{ $pagelist }}" class="row mt-3" style="display:none;"> 
+                                    @endif
+                                            @for ($i = 0; $i < 4; $i++)
+                                                @php if(!isset($transferlist[$j])) break; @endphp
+                                                
+                                                @if($transferlist[$j]->to == $user->account_number)
+                                                <div class="col-12 mt-3">
+                                                    <div class="alert alert-success" role="alert">
+                                                        <h5>+ {{ number_format($transferlist[$j]->amount, 2, '.', ',') }} € from {{ $transferlist[$j]->from_user->name }} </h5>
+                                                        <b>Purpose:</b> {{ $transferlist[$j]->purpose }}
+                                                        <hr>
+                                                        {{ $transferlist[$j]->created_at }}
+
+                                                    </div>
+                                                </div>
+                                                @else
+                                                <div class="col-12 mt-3">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        <h5>- {{ number_format($transferlist[$j]->amount, 2, '.', ',') }} € to {{ $transferlist[$j]->to_user->name }} </h5>
+                                                        <b>Purpose:</b> {{ $transferlist[$j]->purpose }}
+                                                        <hr>
+                                                        {{ $transferlist[$j]->created_at }}
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                
+                                                @php $j++; @endphp
+                                            @endfor
+                                        @php $pagelist++; @endphp
+                                    </div>
+                                @endfor
+
+
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <div class="btn-group mt-4" role="group" aria-label="Basic example">
+                                            <button type="button" id="down_list" class="btn btn-primary"><i class="fas fa-chevron-left"></i></button>
+                                            <button type="button" id="page_list" class="btn btn-primary" disabled></button>
+                                            <button type="button" id="up_list" class="btn btn-primary"><i class="fas fa-chevron-right"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            @else
+                                <p class="h5 text-center text-muted"> There is no data... </p>
+                            @endif
+                                
+                        </div>
                         
                         <!-----------------------------Collapse box for Transfers IN---------------------------------------->
                         <div class="collapse" id="transfersIn" data-parent="#accordion">

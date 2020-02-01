@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 01, 2020 at 12:53 PM
+-- Generation Time: Feb 01, 2020 at 04:02 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.2.22
 
@@ -87,7 +87,9 @@ INSERT INTO `transfers` (`id`, `from`, `to`, `amount`, `purpose`, `created_at`, 
 (9, 'yCiBmYpqyVbj51B', 'iezCzYnkZx9ayxn', 77.40, 'Gas money', '2020-01-31 23:33:01', '2020-01-31 23:33:01'),
 (10, 'yCiBmYpqyVbj51B', 'Sea4YF2iWPuyuZz', 300.00, 'Bicycle', '2020-02-01 09:20:25', '2020-02-01 09:20:25'),
 (11, 'Ye7owbmme0ZxgZA', 'Sea4YF2iWPuyuZz', 12.52, 'Money back', '2020-02-01 09:21:05', '2020-02-01 09:21:05'),
-(12, 'Ye7owbmme0ZxgZA', 'Sea4YF2iWPuyuZz', 85.40, 'For help', '2020-02-01 09:21:23', '2020-02-01 09:21:23');
+(12, 'Ye7owbmme0ZxgZA', 'Sea4YF2iWPuyuZz', 85.40, 'For help', '2020-02-01 09:21:23', '2020-02-01 09:21:23'),
+(13, 'Ye7owbmme0ZxgZA', 'iezCzYnkZx9ayxn', 784.20, 'For Pica', '2020-02-01 11:56:22', '2020-02-01 11:56:22'),
+(14, 'Sea4YF2iWPuyuZz', 'iezCzYnkZx9ayxn', 85.40, 'For monitor', '2020-02-01 15:01:22', '2020-02-01 15:01:22');
 
 -- --------------------------------------------------------
 
@@ -114,9 +116,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `account_number`, `balance`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Laura', 'laura@mail.com', 'yCiBmYpqyVbj51B', 986.50, NULL, '$2y$10$AUbsR.iqklFdxJhWk950N.HQMxdE.FIDegENpgi/qUygPwDyQCzhG', NULL, '2020-01-31 23:11:52', '2020-02-01 09:20:26'),
-(2, 'John', 'john@mail.com', 'Ye7owbmme0ZxgZA', 1150.99, NULL, '$2y$10$N8pcvQAHcgXPE/dYtQopaegRqDO3/mwS9t7G51DYtg0Ia1WNIUlUS', NULL, '2020-01-31 23:12:44', '2020-02-01 09:21:23'),
-(3, 'David', 'david@mail.com', 'Sea4YF2iWPuyuZz', 1176.28, NULL, '$2y$10$Ow37NutShWAq0UMop9.7zuX8BXP58b/.gYDisENpuA2pMHxou3wNS', NULL, '2020-01-31 23:13:13', '2020-02-01 09:21:23'),
-(4, 'Sandra', 'sandra@mail.com', 'iezCzYnkZx9ayxn', 686.23, NULL, '$2y$10$PPmA/kRPpyBEDgUPRHk8fuzQjcA2Trs128XNEH4H3wNww/FXbWRje', NULL, '2020-01-31 23:13:37', '2020-01-31 23:33:01');
+(2, 'John', 'john@mail.com', 'Ye7owbmme0ZxgZA', 366.79, NULL, '$2y$10$N8pcvQAHcgXPE/dYtQopaegRqDO3/mwS9t7G51DYtg0Ia1WNIUlUS', NULL, '2020-01-31 23:12:44', '2020-02-01 11:56:22'),
+(3, 'David', 'david@mail.com', 'Sea4YF2iWPuyuZz', 1090.88, NULL, '$2y$10$Ow37NutShWAq0UMop9.7zuX8BXP58b/.gYDisENpuA2pMHxou3wNS', NULL, '2020-01-31 23:13:13', '2020-02-01 15:01:22'),
+(4, 'Sandra', 'sandra@mail.com', 'iezCzYnkZx9ayxn', 1555.83, NULL, '$2y$10$PPmA/kRPpyBEDgUPRHk8fuzQjcA2Trs128XNEH4H3wNww/FXbWRje', NULL, '2020-01-31 23:13:37', '2020-02-01 15:01:22');
 
 --
 -- Indexes for dumped tables
@@ -164,7 +166,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `transfers`
 --
 ALTER TABLE `transfers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -23,9 +23,14 @@ class HomeController extends Controller
         $user = Auth::user();
 
         $transfersin = Transfer::where('to', $user->account_number)->orderBy('created_at', 'desc')->get();
-        
         $transfersout = Transfer::where('from', $user->account_number)->orderBy('created_at', 'desc')->get();
 
-        return view('home')->with(compact('user', 'transfersin', 'transfersout'));
+        $transferlist = Transfer::where('to', $user->account_number)
+                    ->orWhere('from', $user->account_number)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+
+        return view('home')->with(compact('user', 'transfersin', 'transfersout', 'transferlist'));
     }
 }
