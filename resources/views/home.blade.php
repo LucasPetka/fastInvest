@@ -27,10 +27,13 @@ $(document).ready(function(){
                 if(!result.found){
                     $('#send_submit').prop('disabled', true);
                     $('#account_number_feedback').show();
+                    $('#user_name').hide();
                 }  
                 else{
                     $('#send_submit').prop('disabled', false);
                     $('#account_number_feedback').hide();
+                    $('#user_name').show();
+                    $('#user_name').html("<b>"+ result.user_name + "</b> is owner of this account number");
                 }
             }
         });
@@ -57,6 +60,9 @@ $(document).ready(function(){
                     {{Form::text('account_number', '', ['class' => 'form-control','id' => 'account_number', 'placeholder' => 'Account number of user that you are sending for', 'maxlength' => 15,'required' => 'required'])}}
                     <div class="invalid-feedback" id="account_number_feedback" style="display: none;">
                         This account number not exist.
+                    </div>
+                    <div id="user_name" class="text-secondary mt-2" style="display:none;">
+
                     </div>
                 </div>
                 <div class="form-group">

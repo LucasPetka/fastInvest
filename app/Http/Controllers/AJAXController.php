@@ -15,8 +15,10 @@ class AJAXController extends Controller
 
         $exists = User::where('account_number', $account_number)->exists();
 
+        $user = User::where('account_number', $account_number)->first();
+
         if (!empty($exists)) {
-            return response()->json(array('found'=> true), 200);
+            return response()->json(array('found'=> true, 'user_name'=> $user->name), 200);
         }
         else{
             return response()->json(array('found'=> false), 200);
